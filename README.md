@@ -18,12 +18,6 @@ To control an electrical device remotely through a cloud platform using MQTT com
 - Cloud Platform such as Blynk or ThingSpeak
 - MQTT Broker / MQTT Service
 
-# Circuit Diagram
-
----
-To upload
----
-
 # Procedure
 
 ## Step 1: Assemble the Circuit
@@ -91,13 +85,63 @@ To upload
 7. Record the commands and corresponding device states.
 
 # Program
+```
+#define BLYNK_TEMPLATE_ID "TMPL37YjFuOSC"
+#define BLYNK_TEMPLATE_NAME "ARDUINO LEDBLINK"
+#define BLYNK_AUTH_TOKEN "-0jzmjz_pAaRNTZSczXd1I3y91hO7OxU"
 
+#define BLYNK_PRINT Serial
 
+#include <WiFiS3.h>
+#include <BlynkSimpleWifi.h>
 
-> **Note:** The above program is written for an **ESP32** using the `WiFi.h` library. Replace the Wi-Fi credentials, MQTT broker address, and MQTT topic with the values used in the laboratory setup.
+char ssid[] = "Thara";
+char pass[] = "9566370385";
+
+const int LED_PIN = LED_BUILTIN;
+
+BLYNK_WRITE(V0)
+{
+  int value = param.asInt();
+
+  if (value == 1)
+  {
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("LED ON");
+  }
+  else
+  {
+    digitalWrite(LED_PIN, LOW);
+    Serial.println("LED OFF");
+  }
+}
+
+void setup()
+{
+  Serial.begin(115200);
+
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+
+  Serial.println("Connecting to Blynk...");
+
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+
+  Serial.println("Connected to Blynk!");
+}
+
+void loop()
+{
+  Blynk.run();
+}
+```
 
 # Observation
 
+#LED ON
+<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/d149b014-3d75-4ea8-a8c5-7a9022e70c73" />
+# LED OFF
+<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/cabd36ec-424d-4481-a1d3-99db940346af" />
 
 # Result
 

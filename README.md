@@ -138,8 +138,9 @@ void loop()
 # Observation
 # LED ON
 <img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/d149b014-3d75-4ea8-a8c5-7a9022e70c73" />
+
 # LED OFF
 <img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/cabd36ec-424d-4481-a1d3-99db940346af" />
-# Result
 
+# Result
 The **cloud-based device control system was successfully implemented using MQTT and Wi-Fi communication**. The device was remotely controlled by sending ON/OFF commands through the MQTT communication channel. The experiment demonstrated the use of **IoT cloud connectivity, MQTT messaging, Wi-Fi communication, and remote device control**.
